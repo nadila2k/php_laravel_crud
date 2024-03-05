@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="text-center">Create a Product</h1>
+    <h1 class="text-center" >Edit a Product</h1>
     <br>
     @if ($errors->any())
     
@@ -20,13 +20,13 @@
      
     @endif
     <br>
-    <form action="{{ route('product.store') }}" method="POST" class="container mt-5">
+    <form action="{{ route('product.update',['product' =>$product ]) }}" method="POST" class="container mt-5">
        @csrf
-       @method('post')
+       @method('put')
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Name :</label>
             <div class="col-sm-10">
-                <input type="text" name="name" class="form-control"  placeholder="Name">
+                <input type="text" name="name" class="form-control"   value="{{$product->name}}">
             </div>
         </div>
         <br>
@@ -34,27 +34,27 @@
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Qty:</label>
             <div class="col-sm-10">
-                <input type="text" name="qty" class="form-control"  placeholder="Qty">
+                <input type="text" name="qty" class="form-control" value="{{$product->qty}}" >
             </div>
         </div>
         <br>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Price :</label>
             <div class="col-sm-10">
-                <input type="text" name="price" class="form-control" placeholder="Price">
+                <input type="text" name="price" class="form-control"  value="{{$product->price}}" >
             </div>
         </div>
         <br>
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">Description :</label>
             <div class="col-sm-10">
-                <input type="text" name="description" class="form-control"  placeholder="Description">
+                <input type="text" name="description" class="form-control"  value="{{$product->description}}" >
             </div>
         </div>
         <br>
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
-                <input type="submit" name="submit" value="Save a new Product" class="btn btn-primary">
+                <input type="submit" name="submit" value="Update" class="btn btn-primary">
             </div>
         </div>
     </form>
